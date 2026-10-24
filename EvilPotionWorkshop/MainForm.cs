@@ -39,6 +39,7 @@ namespace EvilPotionWorkshop
             Result.Text = "Production complete. \nReady for the next round of production.";
         }
 
+        
         private void Recipe_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshIngredientDisplay();
@@ -71,7 +72,14 @@ namespace EvilPotionWorkshop
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            _currentProgress++;
+            progressBar1.Value = _currentProgress;
 
+            if (_currentProgress >= TotalBrewSeconds)
+            {
+                timer1.Stop();  
+                Start.Enabled = true; 
+            }
         }
     }
 }
