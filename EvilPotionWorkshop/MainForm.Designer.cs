@@ -37,6 +37,7 @@
             progressBar1 = new ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            HorrorTip = new Label();
             SuspendLayout();
             // 
             // Recipe
@@ -92,12 +93,24 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // HorrorTip
+            // 
+            HorrorTip.BackColor = Color.Black;
+            HorrorTip.Font = new Font("Algerian", 14.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            HorrorTip.ForeColor = Color.DarkRed;
+            HorrorTip.Location = new Point(361, 0);
+            HorrorTip.Name = "HorrorTip";
+            HorrorTip.Size = new Size(439, 66);
+            HorrorTip.TabIndex = 6;
+            HorrorTip.Text = "Legend has it that if you feed the demon until it’s full,                                                          you will gain immense power...";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 450);
+            Controls.Add(HorrorTip);
             Controls.Add(progressBar1);
             Controls.Add(Result);
             Controls.Add(Start);
@@ -118,5 +131,6 @@
         private ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Label HorrorTip;
     }
 }
