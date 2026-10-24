@@ -46,7 +46,27 @@ namespace EvilPotionWorkshop
 
         private void Start_Click(object sender, EventArgs e)
         {
+            if (timer1.Enabled) return; 
 
+            string recipe = Recipe.SelectedItem.ToString();
+
+            if (recipe == "Healing Potion" && _unicornHair < 2)
+            {
+                MessageBox.Show("UnicornHair stock insufficient!");
+                return;
+            }
+            if (recipe == "Fire Elixir" && _phoenixFeather < 3)
+            {
+                MessageBox.Show("PhoenixFeather stock insufficient!");
+                return;
+            }
+
+            _currentProgress = 0;
+            progressBar1.Value = 0;
+            Result.Text = "Brewing…";
+
+            timer1.Start();
+            Start.Enabled = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
