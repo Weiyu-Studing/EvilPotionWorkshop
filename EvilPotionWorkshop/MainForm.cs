@@ -2,20 +2,18 @@ namespace EvilPotionWorkshop
 {
     public partial class MainForm : Form
     {
-        private int _unicornHair = 12;
-        private int _phoenixFeather = 8;
+        private int _vampireFinger = 12;
+        private int _giantSkull = 8;
 
-        
         private const int TotalBrewSeconds = 5;
-        
         private int _currentProgress;
 
         public MainForm()
         {
             InitializeComponent();
-            
-            Recipe.Items.Add("Healing Potion");
-            Recipe.Items.Add("Fire Elixir");
+
+            Recipe.Items.Add("Blood‑Red Finger Sacrifice");
+            Recipe.Items.Add("Giant's Resentment");
             Recipe.SelectedIndex = 0;
 
             timer1.Stop();
@@ -29,27 +27,29 @@ namespace EvilPotionWorkshop
         void RefreshIngredientDisplay()
         {
             string select = Recipe.SelectedItem.ToString();
-            if (select == "Healing Potion")
+            if (select == "Blood‑Red Finger Sacrifice")
             {
-                IngredientInfo.Text = $"Need：UnicornHair ×2\nStock：{_unicornHair}";
+                IngredientInfo.Text = $"Need：Vampire Finger ×2\nStock：{_vampireFinger}";
             }
             else
             {
-                IngredientInfo.Text = $"Need：PhoenixFeather ×3\nStock：{_phoenixFeather}";
+                IngredientInfo.Text = $"Need：Giant Skull ×3\nStock：{_giantSkull}";
             }
         }
 
         void BrewFinish()
         {
             string recipe = Recipe.SelectedItem.ToString();
-            if (recipe == "Healing Potion")
+
+            if (recipe == "Blood‑Red Finger Sacrifice")
             {
-                _unicornHair -= 2;
+                _vampireFinger -= 2;
             }
             else
             {
-                _phoenixFeather -= 3;
+                _giantSkull -= 3;
             }
+
             RefreshIngredientDisplay();
             Result.Text = "Production complete. The demon is whispering...\nReady for the next round of production.";
         }
@@ -65,14 +65,14 @@ namespace EvilPotionWorkshop
 
             string recipe = Recipe.SelectedItem.ToString();
 
-            if (recipe == "Healing Potion" && _unicornHair < 2)
+            if (recipe == "Blood‑Red Finger Sacrifice" && _vampireFinger < 2)
             {
-                MessageBox.Show("UnicornHair stock insufficient!");
+                MessageBox.Show("Vampire Finger stock insufficient!");
                 return;
             }
-            if (recipe == "Fire Elixir" && _phoenixFeather < 3)
+            if (recipe == "Giant's Resentment" && _giantSkull < 3)
             {
-                MessageBox.Show("PhoenixFeather stock insufficient!");
+                MessageBox.Show("Giant Skull stock insufficient!");
                 return;
             }
 
