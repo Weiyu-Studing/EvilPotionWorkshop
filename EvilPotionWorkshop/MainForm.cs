@@ -2,9 +2,47 @@ namespace EvilPotionWorkshop
 {
     public partial class MainForm : Form
     {
+        private int _unicornHair = 12;
+        private int _phoenixFeather = 8;
+
+        
+        private const int TotalBrewSeconds = 5;
+        
+        private int _currentProgress;
+
         public MainForm()
         {
             InitializeComponent();
+            
+            Recipe.Items.Add("Healing Potion");
+            Recipe.Items.Add("Fire Elixir");
+            Recipe.SelectedIndex = 0;
+
+            timer1.Stop();
+            progressBar1.Maximum = TotalBrewSeconds; 
+            progressBar1.Value = 0;
+
+            RefreshIngredientDisplay(); 
+        }
+
+        void RefreshIngredientDisplay()
+        {
+            
+        }
+
+        private void Recipe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshIngredientDisplay();
+        }
+
+        private void Start_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

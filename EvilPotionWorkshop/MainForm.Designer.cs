@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Recipe = new ComboBox();
-            gredientInfo = new Label();
-            button1 = new Button();
+            IngredientInfo = new Label();
+            Start = new Button();
             Result = new Label();
             progressBar1 = new ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             SuspendLayout();
             // 
             // Recipe
@@ -44,28 +46,34 @@
             Recipe.Name = "Recipe";
             Recipe.Size = new Size(160, 25);
             Recipe.TabIndex = 0;
+            Recipe.SelectedIndexChanged += Recipe_SelectedIndexChanged;
             // 
-            // gredientInfo
+            // IngredientInfo
             // 
-            gredientInfo.AutoSize = true;
-            gredientInfo.Location = new Point(96, 173);
-            gredientInfo.Name = "gredientInfo";
-            gredientInfo.Size = new Size(43, 17);
-            gredientInfo.TabIndex = 1;
-            gredientInfo.Text = "label1";
+            IngredientInfo.AutoSize = true;
+            IngredientInfo.BackColor = SystemColors.ActiveCaptionText;
+            IngredientInfo.ForeColor = SystemColors.ButtonHighlight;
+            IngredientInfo.Location = new Point(96, 173);
+            IngredientInfo.Name = "IngredientInfo";
+            IngredientInfo.Size = new Size(43, 17);
+            IngredientInfo.TabIndex = 1;
+            IngredientInfo.Text = "label1";
             // 
-            // button1
+            // Start
             // 
-            button1.Location = new Point(96, 232);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            Start.Location = new Point(96, 232);
+            Start.Name = "Start";
+            Start.Size = new Size(75, 23);
+            Start.TabIndex = 3;
+            Start.Text = "Start";
+            Start.UseVisualStyleBackColor = true;
+            Start.Click += Start_Click;
             // 
             // Result
             // 
             Result.AutoSize = true;
+            Result.BackColor = SystemColors.ActiveCaptionText;
+            Result.ForeColor = Color.Lime;
             Result.Location = new Point(388, 235);
             Result.Name = "Result";
             Result.Size = new Size(43, 17);
@@ -82,16 +90,18 @@
             // timer1
             // 
             timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 450);
             Controls.Add(progressBar1);
             Controls.Add(Result);
-            Controls.Add(button1);
-            Controls.Add(gredientInfo);
+            Controls.Add(Start);
+            Controls.Add(IngredientInfo);
             Controls.Add(Recipe);
             Name = "MainForm";
             Text = "Form1";
@@ -102,10 +112,11 @@
         #endregion
 
         private ComboBox Recipe;
-        private Label gredientInfo;
-        private Button button1;
+        private Label IngredientInfo;
+        private Button Start;
         private Label Result;
         private ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
