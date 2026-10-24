@@ -27,7 +27,16 @@ namespace EvilPotionWorkshop
 
         void RefreshIngredientDisplay()
         {
-            
+            string select = Recipe.SelectedItem.ToString();
+            if (select == "Healing Potion")
+            {
+                IngredientInfo.Text = $"Need：UnicornHair ×2\nStock：{_unicornHair}";
+            }
+            else
+            {
+                IngredientInfo.Text = $"Need：PhoenixFeather ×3\nStock：{_phoenixFeather}";
+            }
+            Result.Text = "Ready to brew";
         }
 
         private void Recipe_SelectedIndexChanged(object sender, EventArgs e)
