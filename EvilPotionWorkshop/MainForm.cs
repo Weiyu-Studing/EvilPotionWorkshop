@@ -36,7 +36,7 @@ namespace EvilPotionWorkshop
             {
                 IngredientInfo.Text = $"Need：PhoenixFeather ×3\nStock：{_phoenixFeather}";
             }
-            Result.Text = "Ready to brew";
+            Result.Text = "Production complete. \nReady for the next round of production.";
         }
 
         private void Recipe_SelectedIndexChanged(object sender, EventArgs e)
