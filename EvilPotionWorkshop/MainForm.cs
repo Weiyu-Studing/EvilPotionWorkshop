@@ -39,7 +39,22 @@ namespace EvilPotionWorkshop
             Result.Text = "Production complete. \nReady for the next round of production.";
         }
 
-        
+        void BrewFinish()
+        {
+            string recipe = Recipe.SelectedItem.ToString();
+            if (recipe == "Healing Potion")
+            {
+                _unicornHair -= 2;
+                Result.Text = "Complete：Healing Potion，Restore HP";
+            }
+            else
+            {
+                _phoenixFeather -= 3;
+                Result.Text = "Complete：Fire Elixir，Fire Damage +50";
+            }
+            RefreshIngredientDisplay();
+        }
+
         private void Recipe_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshIngredientDisplay();
@@ -77,7 +92,8 @@ namespace EvilPotionWorkshop
 
             if (_currentProgress >= TotalBrewSeconds)
             {
-                timer1.Stop();  
+                timer1.Stop();
+                BrewFinish();
                 Start.Enabled = true; 
             }
         }
