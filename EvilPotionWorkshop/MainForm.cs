@@ -22,7 +22,8 @@ namespace EvilPotionWorkshop
             progressBar1.Maximum = TotalBrewSeconds; 
             progressBar1.Value = 0;
 
-            RefreshIngredientDisplay(); 
+            RefreshIngredientDisplay();
+            Result.Text = "Ready for brewing.";
         }
 
         void RefreshIngredientDisplay()
@@ -36,7 +37,6 @@ namespace EvilPotionWorkshop
             {
                 IngredientInfo.Text = $"Need：PhoenixFeather ×3\nStock：{_phoenixFeather}";
             }
-            Result.Text = "Production complete. \nReady for the next round of production.";
         }
 
         void BrewFinish()
@@ -45,14 +45,13 @@ namespace EvilPotionWorkshop
             if (recipe == "Healing Potion")
             {
                 _unicornHair -= 2;
-                Result.Text = "Complete：Healing Potion，Restore HP";
             }
             else
             {
                 _phoenixFeather -= 3;
-                Result.Text = "Complete：Fire Elixir，Fire Damage +50";
             }
             RefreshIngredientDisplay();
+            Result.Text = "Production complete. The demon is whispering...\nReady for the next round of production.";
         }
 
         private void Recipe_SelectedIndexChanged(object sender, EventArgs e)
